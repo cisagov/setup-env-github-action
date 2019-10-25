@@ -1,0 +1,17 @@
+---
+name: Setup Environment
+author: CISA Development Team
+branding:
+  icon: globe
+  color: purple
+description: Setup a shared GitHub Actions workflow environment
+inputs:
+outputs:
+  PACKER_VERSION:
+    description: The version of Packer to download and use
+  TERRAFORM_VERSION:
+    description: The version of Terraform to download and use
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
