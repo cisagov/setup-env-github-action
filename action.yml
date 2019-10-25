@@ -5,7 +5,6 @@ branding:
   icon: globe
   color: purple
 description: Setup a shared GitHub Actions workflow environment
-inputs:
 outputs:
   PACKER_VERSION:
     description: The version of Packer to download and use
@@ -14,4 +13,3 @@ outputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
