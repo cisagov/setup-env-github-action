@@ -1,4 +1,4 @@
 #!/bin/sh
 
 echo "PACKER_VERSION=1.6.6" >> "$GITHUB_ENV"
-echo "TERRAFORM_VERSION=0.12.31" >> "$GITHUB_ENV"
+echo "TERRAFORM_VERSION=0.13.7" >> "$GITHUB_ENV"
