@@ -15,6 +15,7 @@ None
 |-------------------|-------------|
 | PACKER_VERSION    | The version of [Packer](https://packer.io) to use. |
 | TERRAFORM_VERSION | The version of [Terraform](https://terraform.io) to use. |
+| TERRAFORM_DOCS_VERSION | The version of [terraform-docs](https://github.com/terraform-docs/terraform-docs) to use. |
 
 ## Usage ##
 
