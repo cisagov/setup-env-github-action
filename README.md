@@ -13,8 +13,8 @@ None
 
 | Name              | Description |
 |-------------------|-------------|
-| PACKER_VERSION    | The version of [Packer](https://packer.io) to use |
-| TERRAFORM_VERSION | The version of [Terraform](https://terraform.io) to use |
+| PACKER_VERSION    | The version of [Packer](https://packer.io) to use. |
+| TERRAFORM_VERSION | The version of [Terraform](https://terraform.io) to use. |
 
 ## Usage ##
 
