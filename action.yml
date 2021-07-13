@@ -8,6 +8,8 @@ description: Setup a shared GitHub Actions workflow environment.
 outputs:
   PACKER_VERSION:
     description: The version of Packer to download and use.
+  SHFMT_VERSION:
+    description: The version of shfmt to download and use.
   TERRAFORM_VERSION:
     description: The version of Terraform to download and use.
   TERRAFORM_DOCS_VERSION:
