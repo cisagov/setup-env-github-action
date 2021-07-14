@@ -7,11 +7,13 @@ branding:
 description: Setup a shared GitHub Actions workflow environment.
 outputs:
   PACKER_VERSION:
-    description: The version of Packer to download and use.
+    description: The version of Packer to use.
+  SHFMT_VERSION:
+    description: The version of shfmt to use.
   TERRAFORM_VERSION:
-    description: The version of Terraform to download and use.
+    description: The version of Terraform to use.
   TERRAFORM_DOCS_VERSION:
-    description: The version of terraform-docs to download and use.
+    description: The version of terraform-docs to use.
 runs:
   using: 'docker'
   image: 'Dockerfile'
