@@ -11,3 +11,8 @@ terraform_docs_version=v0.14.1
   echo "TERRAFORM_VERSION=$terraform_version"
   echo "TERRAFORM_DOCS_VERSION=$terraform_docs_version"
 } >> "$GITHUB_ENV"
+
+echo "::set-output name=packer-version::$packer_version"
+echo "::set-output name=shfmt-version::$shfmt_version"
+echo "::set-output name=terraform-version::$terraform_version"
+echo "::set-output name=terraform-docs-version::$terraform_docs_version"
