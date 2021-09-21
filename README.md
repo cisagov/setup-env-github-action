@@ -13,10 +13,10 @@ None
 
 | Name              | Description |
 |-------------------|-------------|
-| PACKER_VERSION    | The version of [Packer](https://packer.io) to use. |
-| SHFMT_VERSION | The version of [shfmt](https://github.com/mvdan/sh#shfmt) to use. |
-| TERRAFORM_VERSION | The version of [Terraform](https://terraform.io) to use. |
-| TERRAFORM_DOCS_VERSION | The version of [terraform-docs](https://github.com/terraform-docs/terraform-docs) to use. |
+| packer-version | The version of [Packer](https://packer.io) to use. |
+| shfmt-version | The version of [shfmt](https://github.com/mvdan/sh#shfmt) to use. |
+| terraform-version | The version of [Terraform](https://terraform.io) to use. |
+| terraform-docs-version | The version of [terraform-docs](https://github.com/terraform-docs/terraform-docs) to use. |
 
 ## Usage ##
 
