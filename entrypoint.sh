@@ -2,8 +2,8 @@
 
 packer_version=1.7.3
 shfmt_version=v3.3.0
-terraform_version=0.14.11
-terraform_docs_version=v0.14.1
+terraform_version=1.0.7
+terraform_docs_version=v0.15.0
 
 {
   echo "PACKER_VERSION=$packer_version"
