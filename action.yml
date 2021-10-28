@@ -8,12 +8,28 @@ description: Setup a shared GitHub Actions workflow environment.
 outputs:
   packer-version:
     description: The version of Packer to use.
+    value: ${{ steps.packer.outputs.version }}
   shfmt-version:
     description: The version of shfmt to use.
+    value: ${{ steps.shfmt.outputs.version }}
   terraform-version:
     description: The version of Terraform to use.
+    value: ${{ steps.terraform.outputs.version }}
   terraform-docs-version:
     description: The version of terraform-docs to use.
+    value: ${{ steps.terraform-docs.outputs.version }}
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "composite"
+  steps:
+    - id: packer
+      run: echo "::set-output name=version::1.7.6"
+      shell: bash
+    - id: shfmt
+      run: echo "::set-output name=version::v3.4.0"
+      shell: bash
+    - id: terraform
+      run: echo "::set-output name=version::1.0.8"
+      shell: bash
+    - id: terraform-docs
+      run: echo "::set-output name=version::v0.16.0"
+      shell: bash
