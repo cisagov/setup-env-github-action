@@ -22,7 +22,7 @@ runs:
   using: "composite"
   steps:
     - id: packer
-      run: echo "::set-output name=version::1.7.6"
+      run: echo "::set-output name=version::1.7.10"
       shell: bash
     - id: shfmt
       run: echo "::set-output name=version::v3.4.3"
