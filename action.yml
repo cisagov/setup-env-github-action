@@ -25,7 +25,7 @@ runs:
       run: echo "::set-output name=version::1.7.6"
       shell: bash
     - id: shfmt
-      run: echo "::set-output name=version::v3.4.0"
+      run: echo "::set-output name=version::v3.4.3"
       shell: bash
     - id: terraform
       run: echo "::set-output name=version::1.0.8"
