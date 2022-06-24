@@ -22,13 +22,13 @@ runs:
   using: "composite"
   steps:
     - id: packer
-      run: echo "::set-output name=version::1.7.10"
+      run: echo "::set-output name=version::1.8.2"
       shell: bash
     - id: shfmt
-      run: echo "::set-output name=version::v3.4.3"
+      run: echo "::set-output name=version::v3.5.1"
       shell: bash
     - id: terraform
-      run: echo "::set-output name=version::1.1.6"
+      run: echo "::set-output name=version::1.2.3"
       shell: bash
     - id: terraform-docs
       run: echo "::set-output name=version::v0.16.0"
