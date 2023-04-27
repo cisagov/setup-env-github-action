@@ -18,6 +18,12 @@ outputs:
   terraform-docs-version:
     description: The version of terraform-docs to use.
     value: ${{ steps.terraform-docs.outputs.version }}
+  go-mock-version:
+    description: The version of go mock to use.
+    value: ${{ steps.go-mock-version.outputs.version }}
+  go-junit-report-version:
+    description: The version of go junit report to use.
+    value: ${{ steps.go-junit-report.outputs.version }}
 runs:
   using: "composite"
   steps:
@@ -32,4 +38,10 @@ runs:
       shell: bash
     - id: terraform-docs
       run: echo "version=v0.16.0" >> $GITHUB_OUTPUT
+      shell: bash
+    - id: go-mock-version
+      run: echo "version=1.6.0>> $GITHUB_OUTPUT
+      shell: bash
+    - id: go-junit-report-version
+      run: echo "version=2.0.0" >> $GITHUB_OUTPUT
       shell: bash
