@@ -7,10 +7,10 @@ branding:
 description: Setup a shared GitHub Actions workflow environment.
 outputs:
   go-junit-report-version:
-    description: The version of go junit report to use.
+    description: The version of jstemmer/go-junit-report to use.
     value: ${{ steps.go-junit-report.outputs.version }}
   go-mock-version:
-    description: The version of go mock to use.
+    description: The version of golang/mock to use.
     value: ${{ steps.go-mock.outputs.version }}
   packer-version:
     description: The version of Packer to use.
