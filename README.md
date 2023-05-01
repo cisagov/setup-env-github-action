@@ -20,7 +20,6 @@ None
 | terraform-version | The version of [Terraform](https://terraform.io) to use. |
 | terraform-docs-version | The version of [terraform-docs](https://github.com/terraform-docs/terraform-docs) to use. |
 
-
 ## Usage ##
 
 ```yaml
