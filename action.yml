@@ -32,7 +32,7 @@ runs:
       run: echo "version=2.0.0" >> $GITHUB_OUTPUT
       shell: bash
     - id: go-mock
-      run: echo "version=1.6.0>> $GITHUB_OUTPUT
+      run: echo "version=1.6.0 >> $GITHUB_OUTPUT
       shell: bash
     - id: packer
       run: echo "version=1.8.2" >> $GITHUB_OUTPUT
