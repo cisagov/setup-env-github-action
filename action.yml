@@ -9,9 +9,9 @@ outputs:
   go-junit-report-version:
     description: The version of jstemmer/go-junit-report to use.
     value: ${{ steps.go-junit-report.outputs.version }}
-  go-mock-version:
+  gomock-version:
     description: The version of golang/mock to use.
-    value: ${{ steps.go-mock.outputs.version }}
+    value: ${{ steps.gomock.outputs.version }}
   packer-version:
     description: The version of Packer to use.
     value: ${{ steps.packer.outputs.version }}
