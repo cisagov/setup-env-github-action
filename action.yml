@@ -31,7 +31,7 @@ runs:
     - id: go-junit-report
       run: echo "version=2.0.0" >> $GITHUB_OUTPUT
       shell: bash
-    - id: go-mock
+    - id: gomock
       run: echo "version=1.6.0 >> $GITHUB_OUTPUT
       shell: bash
     - id: packer
