@@ -6,6 +6,12 @@ branding:
   color: purple
 description: Setup a shared GitHub Actions workflow environment.
 outputs:
+  go-junit-report-version:
+    description: The version of jstemmer/go-junit-report to use.
+    value: ${{ steps.go-junit-report.outputs.version }}
+  gomock-version:
+    description: The version of golang/mock to use.
+    value: ${{ steps.gomock.outputs.version }}
   packer-version:
     description: The version of Packer to use.
     value: ${{ steps.packer.outputs.version }}
@@ -18,9 +24,16 @@ outputs:
   terraform-docs-version:
     description: The version of terraform-docs to use.
     value: ${{ steps.terraform-docs.outputs.version }}
+
 runs:
   using: "composite"
   steps:
+    - id: go-junit-report
+      run: echo "version=v2.0.0" >> $GITHUB_OUTPUT
+      shell: bash
+    - id: gomock
+      run: echo "version=v1.6.0" >> $GITHUB_OUTPUT
+      shell: bash
     - id: packer
       run: echo "version=1.8.2" >> $GITHUB_OUTPUT
       shell: bash

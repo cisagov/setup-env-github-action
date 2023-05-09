@@ -13,6 +13,8 @@ None
 
 | Name              | Description |
 |-------------------|-------------|
+| go-junit-report-version | The version of [go-junit-report](https://github.com/jstemmer/go-junit-report) to use. |
+| gomock-version | The version of [GoMock](https://github.com/golang/mock) to use. |
 | packer-version | The version of [Packer](https://packer.io) to use. |
 | shfmt-version | The version of [shfmt](https://github.com/mvdan/sh#shfmt) to use. |
 | terraform-version | The version of [Terraform](https://terraform.io) to use. |
