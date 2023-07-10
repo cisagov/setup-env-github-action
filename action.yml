@@ -24,9 +24,9 @@ outputs:
   shfmt-version:
     description: The version of shfmt to use.
     value: ${{ steps.shfmt.outputs.version }}
-  staticcheck-version:
+  go-staticcheck-version:
     description: The version of dominikh/go-tools to use.
-    value: ${{ steps.staticcheck.outputs.version }}
+    value: ${{ steps.go-staticcheck.outputs.version }}
   terraform-version:
     description: The version of Terraform to use.
     value: ${{ steps.terraform.outputs.version }}
@@ -55,7 +55,7 @@ runs:
     - id: shfmt
       run: echo "version=v3.5.1" >> $GITHUB_OUTPUT
       shell: bash
-    - id: staticcheck
+    - id: go-staticcheck
       run: echo "version=v1.3.0" >> $GITHUB_OUTPUT
       shell: bash
     - id: terraform
