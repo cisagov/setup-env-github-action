@@ -13,7 +13,7 @@ None
 
 | Name              | Description |
 |-------------------|-------------|
-| go-critic -version | The version of [go-critic](https://github.com/go-critic/go-critic) to use. |
+| go-critic-version | The version of [go-critic](https://github.com/go-critic/go-critic) to use. |
 | go-junit-report-version | The version of [go-junit-report](https://github.com/jstemmer/go-junit-report) to use. |
 | gomock-version | The version of [GoMock](https://github.com/golang/mock) to use. |
 | gosec-version | The version of [GoSec](https://github.com/securego/gosec) to use. |
