@@ -6,18 +6,27 @@ branding:
   color: purple
 description: Setup a shared GitHub Actions workflow environment.
 outputs:
+  go-critic-version:
+    description: The version of go-critic/go-critic to use.
+    value: ${{ steps.go-critic.outputs.version }}
   go-junit-report-version:
     description: The version of jstemmer/go-junit-report to use.
     value: ${{ steps.go-junit-report.outputs.version }}
   gomock-version:
     description: The version of golang/mock to use.
     value: ${{ steps.gomock.outputs.version }}
+  gosec-version:
+    description: The version of gosec to use.
+    value: ${{ steps.gosec.outputs.version }}
   packer-version:
     description: The version of Packer to use.
     value: ${{ steps.packer.outputs.version }}
   shfmt-version:
     description: The version of shfmt to use.
     value: ${{ steps.shfmt.outputs.version }}
+  staticcheck-version:
+    description: The version of dominikh/go-tools to use.
+    value: ${{ steps.staticcheck.outputs.version }}
   terraform-version:
     description: The version of Terraform to use.
     value: ${{ steps.terraform.outputs.version }}
@@ -28,17 +37,26 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - id: go-critic
+      run: echo "version=0.8.1" >> $GITHUB_OUTPUT
+      shell: bash
     - id: go-junit-report
       run: echo "version=v2.0.0" >> $GITHUB_OUTPUT
       shell: bash
     - id: gomock
       run: echo "version=v1.6.0" >> $GITHUB_OUTPUT
       shell: bash
+    - id: gosec
+      run: echo "version=v2.16.0" >> $GITHUB_OUTPUT
+      shell: bash
     - id: packer
       run: echo "version=1.8.2" >> $GITHUB_OUTPUT
       shell: bash
     - id: shfmt
       run: echo "version=v3.5.1" >> $GITHUB_OUTPUT
+      shell: bash
+    - id: staticcheck
+      run: echo "version=v1.3.0" >> $GITHUB_OUTPUT
       shell: bash
     - id: terraform
       run: echo "version=1.2.3" >> $GITHUB_OUTPUT
