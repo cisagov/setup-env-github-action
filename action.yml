@@ -56,7 +56,7 @@ runs:
       run: echo "version=v3.5.1" >> $GITHUB_OUTPUT
       shell: bash
     - id: staticcheck
-      run: echo "version=v1.3.0" >> $GITHUB_OUTPUT
+      run: echo "version=v0.4.3" >> $GITHUB_OUTPUT
       shell: bash
     - id: terraform
       run: echo "version=1.2.3" >> $GITHUB_OUTPUT
