@@ -24,9 +24,9 @@ outputs:
   shfmt-version:
     description: The version of shfmt to use.
     value: ${{ steps.shfmt.outputs.version }}
-  go-staticcheck-version:
-    description: The version of dominikh/go-tools to use.
-    value: ${{ steps.go-staticcheck.outputs.version }}
+  staticcheck-version:
+    description: The version of staticcheck to use.
+    value: ${{ steps.staticcheck.outputs.version }}
   terraform-version:
     description: The version of Terraform to use.
     value: ${{ steps.terraform.outputs.version }}
