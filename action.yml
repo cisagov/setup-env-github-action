@@ -7,7 +7,7 @@ branding:
 description: Setup a shared GitHub Actions workflow environment.
 outputs:
   go-critic-version:
-    description: The version of go-critic/go-critic to use.
+    description: The version of go-critic to use.
     value: ${{ steps.go-critic.outputs.version }}
   go-junit-report-version:
     description: The version of jstemmer/go-junit-report to use.
