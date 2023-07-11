@@ -55,7 +55,7 @@ runs:
     - id: shfmt
       run: echo "version=v3.5.1" >> $GITHUB_OUTPUT
       shell: bash
-    - id: go-staticcheck
+    - id: staticcheck
       run: echo "version=v1.3.0" >> $GITHUB_OUTPUT
       shell: bash
     - id: terraform
