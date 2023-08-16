@@ -16,7 +16,7 @@ None
 | go-critic-version | The version of [go-critic](https://github.com/go-critic/go-critic) to use. |
 | go-junit-report-version | The version of [go-junit-report](https://github.com/jstemmer/go-junit-report) to use. |
 | gomock-version | The version of [GoMock](https://github.com/golang/mock) to use. |
-| gosec-version | The version of [GoSec](https://github.com/securego/gosec) to use. |
+| gosec-version | The version of [gosec](https://github.com/securego/gosec) to use. |
 | packer-version | The version of [Packer](https://packer.io) to use. |
 | shfmt-version | The version of [shfmt](https://github.com/mvdan/sh#shfmt) to use. |
 | staticcheck-version | The version of [staticcheck](https://github.com/dominikh/go-tools/tree/master/cmd/staticcheck) to use. |
