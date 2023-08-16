@@ -50,16 +50,16 @@ runs:
       run: echo "version=v2.16.0" >> $GITHUB_OUTPUT
       shell: bash
     - id: packer
-      run: echo "version=1.8.2" >> $GITHUB_OUTPUT
+      run: echo "version=1.9.2" >> $GITHUB_OUTPUT
       shell: bash
     - id: shfmt
-      run: echo "version=v3.5.1" >> $GITHUB_OUTPUT
+      run: echo "version=v3.7.0" >> $GITHUB_OUTPUT
       shell: bash
     - id: staticcheck
       run: echo "version=v0.4.3" >> $GITHUB_OUTPUT
       shell: bash
     - id: terraform
-      run: echo "version=1.2.3" >> $GITHUB_OUTPUT
+      run: echo "version=1.5.5" >> $GITHUB_OUTPUT
       shell: bash
     - id: terraform-docs
       run: echo "version=v0.16.0" >> $GITHUB_OUTPUT
