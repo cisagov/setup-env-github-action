@@ -33,6 +33,8 @@ jobs:
           # it relies on the existence of a go.sum file.
           cache: false
           go-version: "1.20"
+      - id: setup-rust
+        uses: dtolnay/rust-toolchain@stable
       - name: Lookup Go cache directory
         id: go-cache
         run: |
