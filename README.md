@@ -19,6 +19,7 @@ None
 | gomock-version | The version of [GoMock](https://github.com/golang/mock) to use. |
 | gosec-version | The version of [gosec](https://github.com/securego/gosec) to use. |
 | packer-version | The version of [Packer](https://packer.io) to use. |
+| python-version | The version (major.minor) of [Python](https://github.com/python/cpython) to use. |
 | shfmt-version | The version of [shfmt](https://github.com/mvdan/sh#shfmt) to use. |
 | staticcheck-version | The version of [staticcheck](https://github.com/dominikh/go-tools/tree/master/cmd/staticcheck) to use. |
 | terraform-version | The version of [Terraform](https://terraform.io) to use. |
