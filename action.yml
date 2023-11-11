@@ -6,6 +6,9 @@ branding:
   color: purple
 description: Setup a shared GitHub Actions workflow environment.
 outputs:
+  go-version:
+    description: The version (major.minor) of Go to use.
+    value: ${{ steps.go.outputs.version }}
   go-critic-version:
     description: The version of go-critic to use.
     value: ${{ steps.go-critic.outputs.version }}
@@ -37,6 +40,9 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - id: go
+      run: echo "version=1.21" >> $GITHUB_OUTPUT
+      shell: bash
     - id: go-critic
       run: echo "version=v0.8.1" >> $GITHUB_OUTPUT
       shell: bash
