@@ -6,6 +6,9 @@ branding:
   color: purple
 description: Setup a shared GitHub Actions workflow environment.
 outputs:
+  go-version:
+    description: The version (major.minor) of Go to use.
+    value: ${{ steps.go.outputs.version }}
   go-critic-version:
     description: The version of go-critic to use.
     value: ${{ steps.go-critic.outputs.version }}
@@ -21,6 +24,9 @@ outputs:
   packer-version:
     description: The version of Packer to use.
     value: ${{ steps.packer.outputs.version }}
+  python-version:
+    description: The version (major.minor) of Python to use.
+    value: ${{ steps.python.outputs.version }}
   shfmt-version:
     description: The version of shfmt to use.
     value: ${{ steps.shfmt.outputs.version }}
@@ -37,6 +43,9 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - id: go
+      run: echo "version=1.21" >> $GITHUB_OUTPUT
+      shell: bash
     - id: go-critic
       run: echo "version=v0.8.1" >> $GITHUB_OUTPUT
       shell: bash
@@ -51,6 +60,9 @@ runs:
       shell: bash
     - id: packer
       run: echo "version=1.9.2" >> $GITHUB_OUTPUT
+      shell: bash
+    - id: python
+      run: echo "version=3.12" >> $GITHUB_OUTPUT
       shell: bash
     - id: shfmt
       run: echo "version=v3.7.0" >> $GITHUB_OUTPUT
