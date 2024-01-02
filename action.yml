@@ -71,7 +71,7 @@ runs:
       run: echo "version=v0.4.3" >> $GITHUB_OUTPUT
       shell: bash
     - id: terraform
-      run: echo "version=1.5.5" >> $GITHUB_OUTPUT
+      run: echo "version=1.5.7" >> $GITHUB_OUTPUT
       shell: bash
     - id: terraform-docs
       run: echo "version=v0.17.0" >> $GITHUB_OUTPUT
