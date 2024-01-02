@@ -59,7 +59,7 @@ runs:
       run: echo "version=v2.16.0" >> $GITHUB_OUTPUT
       shell: bash
     - id: packer
-      run: echo "version=1.9.2" >> $GITHUB_OUTPUT
+      run: echo "version=1.9.5" >> $GITHUB_OUTPUT
       shell: bash
     - id: python
       run: echo "version=3.12" >> $GITHUB_OUTPUT
