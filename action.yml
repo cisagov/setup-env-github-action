@@ -58,8 +58,16 @@ runs:
     - id: gosec
       run: echo "version=v2.16.0" >> $GITHUB_OUTPUT
       shell: bash
-    # We must remain on 1.9 due to HashiCorp's decision to change the license
-    # of Packer from MPL 2.0 to BSL starting with 1.10.0.
+    # We are choosing to remain on v1.9 due to HashiCorp's decision to change
+    # the license of Packer from MPL 2.0 to BSL starting with 1.10.0. This is
+    # done for several reasons:
+    # - The Business Source License (BSL/BUSL) is not considered an Open Source
+    #   license.
+    # - The Cloud Native Computing Foundation (CNCF) recommends considering
+    #   alternative components if a project uses a component under the BUSL-1.1
+    #   license.
+    # - This mirrors the same decision being made for Terraform (below) which
+    #   has additional reasons for being held back.
     - id: packer
       run: echo "version=1.9.5" >> $GITHUB_OUTPUT
       shell: bash
@@ -72,8 +80,18 @@ runs:
     - id: staticcheck
       run: echo "version=v0.4.3" >> $GITHUB_OUTPUT
       shell: bash
-    # We must remain on 1.5 due to HashiCorp's decision to change the license
-    # of Terraform from MPL 2.0 to BSL starting with 1.6.0.
+    # We are choosing to remain on v1.5 due to HashiCorp's decision to change
+    # the license of Terraform from MPL 2.0 to BSL starting with 1.6.0. This is
+    # done for several reasons:
+    # - The Business Source License (BSL/BUSL) is not considered an Open Source
+    #   license.
+    # - We may have issues around compatibility with Terraform 1.6+ if we
+    #   leverage non-HashiCorp tooling.
+    # - We may decide to switch to OpenTofu in the future and compatibility is
+    #   only guaranteed with Terraform 1.5 and below.
+    # - The Cloud Native Computing Foundation (CNCF) recommends considering
+    #   alternative components if a project uses a component under the BUSL-1.1
+    #   license.
     - id: terraform
       run: echo "version=1.5.7" >> $GITHUB_OUTPUT
       shell: bash
