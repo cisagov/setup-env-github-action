@@ -15,6 +15,9 @@ outputs:
   go-junit-report-version:
     description: The version of jstemmer/go-junit-report to use.
     value: ${{ steps.go-junit-report.outputs.version }}
+  goimports-version:
+    description: The version of goimports to use.
+    value: ${{ steps.goimports.outputs.version }}
   gomock-version:
     description: The version of golang/mock to use.
     value: ${{ steps.gomock.outputs.version }}
@@ -51,6 +54,9 @@ runs:
       shell: bash
     - id: go-junit-report
       run: echo "version=v2.0.0" >> $GITHUB_OUTPUT
+      shell: bash
+    - id: goimports
+      run: echo "version=v0.17.0" >> $GITHUB_OUTPUT
       shell: bash
     - id: gomock
       run: echo "version=v1.6.0" >> $GITHUB_OUTPUT

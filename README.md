@@ -16,6 +16,7 @@ None
 | go-version | The version (major.minor) of [Go](https://github.com/golang/go) to use. |
 | go-critic-version | The version of [go-critic](https://github.com/go-critic/go-critic) to use. |
 | go-junit-report-version | The version of [go-junit-report](https://github.com/jstemmer/go-junit-report) to use. |
+| goimports-version | The version of [goimports](https://pkg.go.dev/golang.org/x/tools/cmd/goimports) to use. |
 | gomock-version | The version of [GoMock](https://github.com/golang/mock) to use. |
 | gosec-version | The version of [gosec](https://github.com/securego/gosec) to use. |
 | packer-version | The version of [Packer](https://packer.io) to use. |
