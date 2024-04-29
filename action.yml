@@ -62,7 +62,7 @@ runs:
       run: echo "version=v1.6.0" >> $GITHUB_OUTPUT
       shell: bash
     - id: gosec
-      run: echo "version=v2.16.0" >> $GITHUB_OUTPUT
+      run: echo "version=v2.19.0" >> $GITHUB_OUTPUT
       shell: bash
     # We are choosing to remain on v1.9 due to HashiCorp's decision to change
     # the license of Packer from MPL 2.0 to BSL starting with 1.10.0. This is
