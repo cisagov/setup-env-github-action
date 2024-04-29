@@ -53,7 +53,7 @@ runs:
       run: echo "version=v0.11.3" >> $GITHUB_OUTPUT
       shell: bash
     - id: go-junit-report
-      run: echo "version=v2.0.0" >> $GITHUB_OUTPUT
+      run: echo "version=v2.1.0" >> $GITHUB_OUTPUT
       shell: bash
     - id: goimports
       run: echo "version=v0.17.0" >> $GITHUB_OUTPUT
