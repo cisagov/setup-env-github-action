@@ -81,7 +81,7 @@ runs:
       run: echo "version=3.12" >> $GITHUB_OUTPUT
       shell: bash
     - id: shfmt
-      run: echo "version=v3.7.0" >> $GITHUB_OUTPUT
+      run: echo "version=v3.8.0" >> $GITHUB_OUTPUT
       shell: bash
     - id: staticcheck
       run: echo "version=v0.4.3" >> $GITHUB_OUTPUT
