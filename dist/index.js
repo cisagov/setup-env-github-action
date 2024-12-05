@@ -25645,7 +25645,7 @@ async function run() {
   try {
     // Populate the Action outputs with the tool versions
     for (const [key, value] of Object.entries(toolVersions)) {
-      core.setOutput(key + "-version", value);
+      core.setOutput(key + "-version", value.version);
     }
   } catch (error) {
     // Fail the workflow run if an error occurs
@@ -25670,12 +25670,12 @@ module.exports = {
  * version of the tool we use.
  */
 const toolVersions = {
-  go: "1.22",
-  "go-critic": "v0.11.3",
-  "go-junit-report": "v2.1.0",
-  goimports: "v0.20.0",
-  gomock: "v1.6.0",
-  gosec: "v2.19.0",
+  go: { version: "1.22" },
+  "go-critic": { version: "v0.11.3" },
+  "go-junit-report": { version: "v2.1.0" },
+  goimports: { version: "v0.20.0" },
+  gomock: { version: "v1.6.0" },
+  gosec: { version: "v2.19.0" },
   /**
    * We are choosing to remain on v1.9 due to HashiCorp's decision to change
    * the license of Packer from MPL 2.0 to BSL starting with 1.10.0. This is
@@ -25688,10 +25688,10 @@ const toolVersions = {
    * - This mirrors the same decision being made for Terraform (below) which
    *   has additional reasons for being held back.
    */
-  packer: "1.9.5",
-  python: "3.12",
-  shfmt: "v3.8.0",
-  staticcheck: "v0.4.7",
+  packer: { version: "1.9.5" },
+  python: { version: "3.12" },
+  shfmt: { version: "v3.8.0" },
+  staticcheck: { version: "v0.4.7" },
   /**
    * We are choosing to remain on v1.5 due to HashiCorp's decision to change
    * the license of Terraform from MPL 2.0 to BSL starting with 1.6.0. This is
@@ -25706,8 +25706,8 @@ const toolVersions = {
    *   alternative components if a project uses a component under the BUSL-1.1
    *   license.
    */
-  terraform: "1.5.7",
-  "terraform-docs": "v0.17.0",
+  terraform: { version: "1.5.7" },
+  "terraform-docs": { version: "v0.17.0" },
 };
 
 module.exports = {
