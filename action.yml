@@ -8,99 +8,29 @@ description: Setup a shared GitHub Actions workflow environment.
 outputs:
   go-version:
     description: The version (major.minor) of Go to use.
-    value: ${{ steps.go.outputs.version }}
   go-critic-version:
     description: The version of go-critic to use.
-    value: ${{ steps.go-critic.outputs.version }}
   go-junit-report-version:
     description: The version of jstemmer/go-junit-report to use.
-    value: ${{ steps.go-junit-report.outputs.version }}
   goimports-version:
     description: The version of goimports to use.
-    value: ${{ steps.goimports.outputs.version }}
   gomock-version:
     description: The version of golang/mock to use.
-    value: ${{ steps.gomock.outputs.version }}
   gosec-version:
     description: The version of gosec to use.
-    value: ${{ steps.gosec.outputs.version }}
   packer-version:
     description: The version of Packer to use.
-    value: ${{ steps.packer.outputs.version }}
   python-version:
     description: The version (major.minor) of Python to use.
-    value: ${{ steps.python.outputs.version }}
   shfmt-version:
     description: The version of shfmt to use.
-    value: ${{ steps.shfmt.outputs.version }}
   staticcheck-version:
     description: The version of staticcheck to use.
-    value: ${{ steps.staticcheck.outputs.version }}
   terraform-version:
     description: The version of Terraform to use.
-    value: ${{ steps.terraform.outputs.version }}
   terraform-docs-version:
     description: The version of terraform-docs to use.
-    value: ${{ steps.terraform-docs.outputs.version }}
 
 runs:
-  using: "composite"
-  steps:
-    - id: go
-      run: echo "version=1.22" >> $GITHUB_OUTPUT
-      shell: bash
-    - id: go-critic
-      run: echo "version=v0.11.3" >> $GITHUB_OUTPUT
-      shell: bash
-    - id: go-junit-report
-      run: echo "version=v2.1.0" >> $GITHUB_OUTPUT
-      shell: bash
-    - id: goimports
-      run: echo "version=v0.20.0" >> $GITHUB_OUTPUT
-      shell: bash
-    - id: gomock
-      run: echo "version=v1.6.0" >> $GITHUB_OUTPUT
-      shell: bash
-    - id: gosec
-      run: echo "version=v2.19.0" >> $GITHUB_OUTPUT
-      shell: bash
-    # We are choosing to remain on v1.9 due to HashiCorp's decision to change
-    # the license of Packer from MPL 2.0 to BSL starting with 1.10.0. This is
-    # done for several reasons:
-    # - The Business Source License (BSL/BUSL) is not considered an Open Source
-    #   license.
-    # - The Cloud Native Computing Foundation (CNCF) recommends considering
-    #   alternative components if a project uses a component under the BUSL-1.1
-    #   license.
-    # - This mirrors the same decision being made for Terraform (below) which
-    #   has additional reasons for being held back.
-    - id: packer
-      run: echo "version=1.9.5" >> $GITHUB_OUTPUT
-      shell: bash
-    - id: python
-      run: echo "version=3.12" >> $GITHUB_OUTPUT
-      shell: bash
-    - id: shfmt
-      run: echo "version=v3.8.0" >> $GITHUB_OUTPUT
-      shell: bash
-    - id: staticcheck
-      run: echo "version=v0.4.7" >> $GITHUB_OUTPUT
-      shell: bash
-    # We are choosing to remain on v1.5 due to HashiCorp's decision to change
-    # the license of Terraform from MPL 2.0 to BSL starting with 1.6.0. This is
-    # done for several reasons:
-    # - The Business Source License (BSL/BUSL) is not considered an Open Source
-    #   license.
-    # - We may have issues around compatibility with Terraform 1.6+ if we
-    #   leverage non-HashiCorp tooling.
-    # - We may decide to switch to OpenTofu in the future and compatibility is
-    #   only guaranteed with Terraform 1.5 and below.
-    # - The Cloud Native Computing Foundation (CNCF) recommends considering
-    #   alternative components if a project uses a component under the BUSL-1.1
-    #   license.
-    - id: terraform
-      run: echo "version=1.5.7" >> $GITHUB_OUTPUT
-      shell: bash
-    - id: terraform-docs
-      run: echo "version=v0.17.0" >> $GITHUB_OUTPUT
-      shell: bash
+  main: dist/index.js
+  using: node20
