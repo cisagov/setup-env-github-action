@@ -5,3 +5,6 @@
 # Already being linted by yamllint
 *.yaml
 *.yml
+# Node.js project distribution files
+dist/
+node_modules/
