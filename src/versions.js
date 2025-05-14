@@ -24,7 +24,7 @@ const toolVersions = {
    *   has additional reasons for being held back.
    */
   packer: "1.9.5",
-  python: "3.12",
+  python: "3.13",
   shfmt: "v3.8.0",
   staticcheck: "v0.4.7",
   /**
