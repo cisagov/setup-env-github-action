@@ -26,7 +26,7 @@ const toolVersions = {
   packer: "1.9.5",
   python: "3.13",
   shfmt: "v3.11.0",
-  staticcheck: "v0.4.7",
+  staticcheck: "v0.6.1",
   /**
    * We are choosing to remain on v1.5 due to HashiCorp's decision to change
    * the license of Terraform from MPL 2.0 to BSL starting with 1.6.0. This is
