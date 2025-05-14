@@ -25,7 +25,7 @@ const toolVersions = {
    */
   packer: "1.9.5",
   python: "3.13",
-  shfmt: "v3.8.0",
+  shfmt: "v3.11.0",
   staticcheck: "v0.4.7",
   /**
    * We are choosing to remain on v1.5 due to HashiCorp's decision to change
