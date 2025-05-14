@@ -8,7 +8,7 @@ const toolVersions = {
   go: "1.24",
   "go-critic": "v0.13.0",
   "go-junit-report": "v2.1.0",
-  goimports: "v0.20.0",
+  goimports: "v0.33.0",
   gomock: "v1.6.0",
   gosec: "v2.19.0",
   /**
