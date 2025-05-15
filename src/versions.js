@@ -5,12 +5,12 @@
  * version of the tool we use.
  */
 const toolVersions = {
-  go: "1.22",
-  "go-critic": "v0.11.3",
+  go: "1.24",
+  "go-critic": "v0.13.0",
   "go-junit-report": "v2.1.0",
-  goimports: "v0.20.0",
+  goimports: "v0.33.0",
   gomock: "v1.6.0",
-  gosec: "v2.19.0",
+  gosec: "v2.22.4",
   /**
    * We are choosing to remain on v1.9 due to HashiCorp's decision to change
    * the license of Packer from MPL 2.0 to BSL starting with 1.10.0. This is
@@ -24,9 +24,9 @@ const toolVersions = {
    *   has additional reasons for being held back.
    */
   packer: "1.9.5",
-  python: "3.12",
-  shfmt: "v3.8.0",
-  staticcheck: "v0.4.7",
+  python: "3.13",
+  shfmt: "v3.11.0",
+  staticcheck: "v0.6.1",
   /**
    * We are choosing to remain on v1.5 due to HashiCorp's decision to change
    * the license of Terraform from MPL 2.0 to BSL starting with 1.6.0. This is
@@ -42,7 +42,7 @@ const toolVersions = {
    *   license.
    */
   terraform: "1.5.7",
-  "terraform-docs": "v0.17.0",
+  "terraform-docs": "v0.20.0",
 };
 
 module.exports = {
