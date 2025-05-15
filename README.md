@@ -35,7 +35,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: cisagov/setup-env-github-action@6e901890ff80cdb05aa9308bebca0875d1e64ebf # v1.0.0
+      - uses: cisagov/setup-env-github-action@e4811080ee62deb1ca09fc4413bb3f8b88bfbeb2 # v1.1.0
 ```
 
 ## Contributing ##
