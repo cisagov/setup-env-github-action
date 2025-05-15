@@ -1,0 +1,117 @@
+---
+name: release
+
+on:  # yamllint disable-line rule:truthy
+  release:
+    types:
+      - released
+
+# Set a default shell for any run steps. The `-Eueo pipefail` sets
+# errtrace, nounset, errexit, and pipefail. The `-x` will print all
+# commands as they are run. Please see the GitHub Actions
+# documentation for more information:
+# https://docs.github.com/en/actions/using-jobs/setting-default-values-for-jobs
+defaults:
+  run:
+    shell: bash -Eueo pipefail -x {0}
+
+jobs:
+  diagnostics:
+    name: Run diagnostics
+    # This job does not need any permissions
+    permissions: {}
+    runs-on: ubuntu-latest
+    steps:
+      # Note that a duplicate of this step must be added at the top of
+      # each job.
+      - name: Apply standard cisagov job preamble
+        uses: cisagov/action-job-preamble@v1
+        with:
+          check_github_status: "true"
+          # This functionality is poorly implemented and has been
+          # causing problems due to the MITM implementation hogging or
+          # leaking memory.  As a result we disable it by default.  If
+          # you want to temporarily enable it, simply set
+          # monitor_permissions equal to "true".
+          #
+          # TODO: Re-enable this functionality when practical.  See
+          # cisagov/skeleton-action-composite#5 for more details.
+          monitor_permissions: "false"
+          output_workflow_context: "true"
+          # Use a variable to specify the permissions monitoring
+          # configuration. By default this will yield the
+          # configuration stored in the cisagov organization-level
+          # variable, but if you want to use a different configuration
+          # then simply:
+          # 1. Create a repository-level variable with the name
+          # ACTIONS_PERMISSIONS_CONFIG.
+          # 2. Set this new variable's value to the configuration you
+          # want to use for this repository.
+          #
+          # Note in particular that changing the permissions
+          # monitoring configuration *does not* require you to modify
+          # this workflow.
+          permissions_monitoring_config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
+  release:
+    needs:
+      - diagnostics
+    permissions:
+      # We need write permission to move tags
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply standard cisagov job preamble
+        uses: cisagov/action-job-preamble@v1
+        with:
+          # This functionality is poorly implemented and has been
+          # causing problems due to the MITM implementation hogging or
+          # leaking memory.  As a result we disable it by default.  If
+          # you want to temporarily enable it, simply set
+          # monitor_permissions equal to "true".
+          #
+          # TODO: Re-enable this functionality when practical.  See
+          # cisagov/skeleton-action-composite#5 for more details.
+          monitor_permissions: "false"
+          # Use a variable to specify the permissions monitoring
+          # configuration. By default this will yield the
+          # configuration stored in the cisagov organization-level
+          # variable, but if you want to use a different configuration
+          # then simply:
+          # 1. Create a repository-level variable with the name
+          # ACTIONS_PERMISSIONS_CONFIG.
+          # 2. Set this new variable's value to the configuration you
+          # want to use for this repository.
+          #
+          # Note in particular that changing the permissions
+          # monitoring configuration *does not* require you to modify
+          # this workflow.
+          permissions_monitoring_config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
+      - id: extract-semver-parts
+        name: Extract semver parts
+        uses: zyactions/semver@v1
+        with:
+          # This input consists of a newline-separated list of version
+          # prefixes, so in the interest of future expansion we go
+          # ahead and use the YAML multiline literal style indicator.
+          prefixes: |
+            v
+      - id: checkout-repo
+        name: Checkout the repository
+        uses: actions/checkout@v4
+      - id: move-tags
+        # Just in case...
+        if: ${{ steps.extract-semver-parts.outputs.valid == 'true' }}
+        name: Move tags
+        run: |
+          major_tag=v${{ steps.extract-semver-parts.outputs.major }}
+          major_minor_tag=${major_tag}.${{ steps.extract-semver-parts.outputs.minor }}
+          # Delete old tags remotely, if they exist
+          git ls-remote --exit-code --tags origin ${major_tag} \
+          && git push origin --delete ${major_tag}
+          git ls-remote --exit-code --tags origin ${major_minor_tag} \
+          && git push origin --delete ${major_minor_tag}
+          # Create new tags locally
+          git tag ${major_tag}
+          git tag ${major_minor_tag}
+          # Push up new tags
+          git push origin ${major_tag} ${major_minor_tag}
