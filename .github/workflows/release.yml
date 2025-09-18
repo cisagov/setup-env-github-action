@@ -97,7 +97,7 @@ jobs:
             v
       - id: checkout-repo
         name: Checkout the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - id: move-tags
         # Just in case...
         if: ${{ steps.extract-semver-parts.outputs.valid == 'true' }}
