@@ -1,6 +1,8 @@
 # setup-env-github-action #
 
 [![GitHub Build Status](https://github.com/cisagov/setup-env-github-action/workflows/build/badge.svg)](https://github.com/cisagov/setup-env-github-action/actions)
+[![License](https://img.shields.io/github/license/cisagov/setup-env-github-action)](https://spdx.org/licenses/)
+[![CodeQL](https://github.com/cisagov/setup-env-github-action/workflows/CodeQL/badge.svg)](https://github.com/cisagov/setup-env-github-action/actions/workflows/codeql-analysis.yml)
 
 A [GitHub Action](https://github.com/features/actions) to setup a common environment
 for our workflows.
