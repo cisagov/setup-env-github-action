@@ -13,8 +13,8 @@ None
 
 ## Outputs ##
 
-| Name              | Description |
-|-------------------|-------------|
+| Name | Description |
+| ---- | ----------- |
 | go-version | The version (major.minor) of [Go](https://github.com/golang/go) to use. |
 | go-critic-version | The version of [go-critic](https://github.com/go-critic/go-critic) to use. |
 | go-junit-report-version | The version of [go-junit-report](https://github.com/jstemmer/go-junit-report) to use. |
