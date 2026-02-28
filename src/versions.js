@@ -5,7 +5,7 @@
  * version of the tool we use.
  */
 const toolVersions = {
-  go: "1.24",
+  go: "1.26",
   "go-critic": "v0.13.0",
   "go-junit-report": "v2.1.0",
   goimports: "v0.33.0",
