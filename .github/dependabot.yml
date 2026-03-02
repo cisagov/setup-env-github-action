@@ -33,6 +33,11 @@ updates:
       interval: weekly
 
   - directory: /
+    package-ecosystem: npm
+    schedule:
+      interval: weekly
+
+  - directory: /
     package-ecosystem: pip
     schedule:
       interval: weekly
