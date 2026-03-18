@@ -103,3 +103,4 @@ jobs:
             for (const [key, value] of Object.entries(toolVersions)) {
               output_versions[key + "-version"] === value
             }
+            output_versions["null-version"] === "v1.2.3"
