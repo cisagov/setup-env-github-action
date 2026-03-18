@@ -116,11 +116,12 @@ jobs:
             const outputVersions = JSON.parse(process.env.ACTION_OUTPUTS)
             var failedChecks = 0
             for (const [key, value] of Object.entries(toolVersions)) {
-              if (!Object.hasOwn(outputVersions, `${key}-version`)) {
-                console.error(`Missing '${key}-version' in outputs`)
+              const outputKey = `${key}-version`
+              if (!Object.hasOwn(outputVersions, outputKey)) {
+                console.error(`Missing '${outputKey}' in outputs`)
                 failedChecks++
               }
-              if (outputVersions[`${key}-version`] !== value) {
+              if (outputVersions[outputKey] !== value) {
                 console.error(`Mismatched versions for ${key}`)
                 failedChecks++
               }
