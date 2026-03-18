@@ -99,8 +99,17 @@ jobs:
         with:
           script: |
             const { toolVersions } = require("./src/versions.js")
-            const output_versions = JSON.parse(process.env.ACTION_OUTPUTS)
+            const outputVersions = JSON.parse(process.env.ACTION_OUTPUTS)
+            var failedChecks = 0
             for (const [key, value] of Object.entries(toolVersions)) {
-              output_versions[key + "-version"] === value
+              if (key + "-version" in outputVersions === false) {
+                console.error("Missing " + key + "-version value")
+                failedChecks++
+              }
+              if (outputVersions[key + "-version"] !== value) {
+                console.error("Mismatched versions for " + key)
+              }
             }
-            output_versions["null-version"] === "v1.2.3"
+            if (failedChecks > 0) {
+              core.setFailed("Verification failed")
+            }
