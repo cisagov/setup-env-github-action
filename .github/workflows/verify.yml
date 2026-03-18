@@ -110,6 +110,8 @@ jobs:
                 console.error("Mismatched versions for " + key)
               }
             }
+            console.error("Forcing failure")
+            failedChecks++
             if (failedChecks > 0) {
               core.setFailed("Verification failed")
             }
