@@ -89,9 +89,10 @@ jobs:
           # monitoring configuration *does not* require you to modify
           # this workflow.
           permissions_monitoring_config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
-      - uses: actions/checkout@v6
-      # We are using the local copy of the action to verify functionality
+      - name: Checkout the repository
+        uses: actions/checkout@v6
       - id: setup-env
+        name: Run action from the local copy
         uses: ./
       - name: Install dependencies and build the action
         run: |
@@ -99,9 +100,10 @@ jobs:
           npm run package
       - name: Verify that dist/ is up-to-date with changes in src/
         run: git diff --exit-code dist/
-      - uses: actions/github-script@v8
-        env:
+      - env:
           ACTION_OUTPUTS: ${{ toJSON(steps.setup-env.outputs) }}
+        name: Verify expected functionality of the action
+        uses: actions/github-script@v8
         with:
           script: |
             const { toolVersions } = require("./src/versions.js")
