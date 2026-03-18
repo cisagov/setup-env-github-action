@@ -102,7 +102,7 @@ jobs:
             const outputVersions = JSON.parse(process.env.ACTION_OUTPUTS)
             var failedChecks = 0
             for (const [key, value] of Object.entries(toolVersions)) {
-              if (key + "-version" in outputVersions === false) {
+              if (!Object.hasOwn(outputVersions, key + "-version")) {
                 console.error("Missing " + key + "-version value")
                 failedChecks++
               }
@@ -110,8 +110,6 @@ jobs:
                 console.error("Mismatched versions for " + key)
               }
             }
-            console.error("Forcing failure")
-            failedChecks++
             if (failedChecks > 0) {
               core.setFailed("Verification failed")
             }
