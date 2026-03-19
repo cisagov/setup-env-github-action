@@ -105,7 +105,13 @@ jobs:
           npm ci
           npm run package
       - name: Verify that dist/ is up-to-date with changes in src/
-        run: git diff --exit-code dist/
+        run: |
+          # Fail if dist/ has changes of any kind
+          if [ -n "$(git status --porcelain dist/)" ]; then
+            echo "Changes detected in dist/ after running 'npm run package'."
+            git status --short dist/
+            exit 1
+          fi
       - env:
           ACTION_OUTPUTS: ${{ toJSON(steps.setup-env.outputs) }}
         name: Verify expected functionality of the action
