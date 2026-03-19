@@ -120,9 +120,11 @@ jobs:
               if (!Object.hasOwn(outputVersions, outputKey)) {
                 console.error(`Missing '${outputKey}' in outputs`)
                 failedChecks++
-              }
-              if (outputVersions[outputKey] !== value) {
-                console.error(`Mismatched versions for ${key}`)
+              } else if (outputVersions[outputKey] !== value) {
+                console.error(
+                  `Mismatched versions for ${key}: expected '${value}', \
+                  got '${outputVersions[outputKey]}'`,
+                )
                 failedChecks++
               }
             }
