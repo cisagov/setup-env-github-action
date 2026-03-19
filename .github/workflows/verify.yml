@@ -122,8 +122,8 @@ jobs:
                 failedChecks++;
               } else if (outputVersions[outputKey] !== value) {
                 console.error(
-                  `Mismatched versions for ${key}: expected '${value}', \
-                  got '${outputVersions[outputKey]}'`,
+                  `Mismatched versions for ${key}: expected '${value}', ` +
+                    `got '${outputVersions[outputKey]}'`,
                 );
                 failedChecks++;
               }
