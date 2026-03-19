@@ -112,22 +112,22 @@ jobs:
         uses: actions/github-script@v8
         with:
           script: |
-            const { toolVersions } = require("./src/versions.js")
-            const outputVersions = JSON.parse(process.env.ACTION_OUTPUTS)
-            var failedChecks = 0
+            const { toolVersions } = require("./src/versions.js");
+            const outputVersions = JSON.parse(process.env.ACTION_OUTPUTS);
+            var failedChecks = 0;
             for (const [key, value] of Object.entries(toolVersions)) {
-              const outputKey = `${key}-version`
+              const outputKey = `${key}-version`;
               if (!Object.hasOwn(outputVersions, outputKey)) {
-                console.error(`Missing '${outputKey}' in outputs`)
-                failedChecks++
+                console.error(`Missing '${outputKey}' in outputs`);
+                failedChecks++;
               } else if (outputVersions[outputKey] !== value) {
                 console.error(
                   `Mismatched versions for ${key}: expected '${value}', \
                   got '${outputVersions[outputKey]}'`,
-                )
-                failedChecks++
+                );
+                failedChecks++;
               }
             }
             if (failedChecks > 0) {
-              core.setFailed("Verification failed")
+              core.setFailed("Verification failed");
             }
