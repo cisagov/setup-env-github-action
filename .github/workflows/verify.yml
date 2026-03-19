@@ -118,12 +118,14 @@ jobs:
             for (const [key, value] of Object.entries(toolVersions)) {
               const outputKey = `${key}-version`;
               if (!Object.hasOwn(outputVersions, outputKey)) {
-                console.error(`Missing '${outputKey}' in outputs`);
+                console.error("Missing '%s' in outputs", outputKey);
                 failedChecks++;
               } else if (outputVersions[outputKey] !== value) {
                 console.error(
-                  `Mismatched versions for ${key}: expected '${value}', ` +
-                    `got '${outputVersions[outputKey]}'`,
+                  "Mismatched versions for %s: expected '%s', got '%s'",
+                  key,
+                  value,
+                  outputVersions[outputKey],
                 );
                 failedChecks++;
               }
