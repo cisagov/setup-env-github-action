@@ -1,0 +1,141 @@
+---
+name: verify
+
+on:  # yamllint disable-line rule:truthy
+  merge_group:
+    types:
+      - checks_requested
+  # We use the default activity types for the pull_request event as specified here:
+  # https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request
+  pull_request:
+    paths:
+      - .github/workflows/verify.yml
+      - action.yml
+      - dist/**
+      - package-lock.json
+      - package.json
+      - src/**
+
+# Set a default shell for any run steps. The `-Eueo pipefail` sets errtrace,
+# nounset, errexit, and pipefail. The `-x` will print all commands as they are
+# run. Please see the GitHub Actions documentation for more information:
+# https://docs.github.com/en/actions/using-jobs/setting-default-values-for-jobs
+defaults:
+  run:
+    shell: bash -Eueo pipefail -x {0}
+
+jobs:
+  diagnostics:
+    name: Run diagnostics
+    # This job does not need any permissions
+    permissions: {}
+    runs-on: ubuntu-latest
+    steps:
+      # Note that a duplicate of this step must be added at the top of
+      # each job.
+      - name: Apply standard cisagov job preamble
+        uses: cisagov/action-job-preamble@v1
+        with:
+          check_github_status: "true"
+          # This functionality is poorly implemented and has been
+          # causing problems due to the MITM implementation hogging or
+          # leaking memory.  As a result we disable it by default.  If
+          # you want to temporarily enable it, simply set
+          # monitor_permissions equal to "true".
+          #
+          # TODO: Re-enable this functionality when practical.  See
+          # cisagov/skeleton-generic#207 for more details.
+          monitor_permissions: "false"
+          output_workflow_context: "true"
+          # Use a variable to specify the permissions monitoring
+          # configuration. By default this will yield the
+          # configuration stored in the cisagov organization-level
+          # variable, but if you want to use a different configuration
+          # then simply:
+          # 1. Create a repository-level variable with the name
+          # ACTIONS_PERMISSIONS_CONFIG.
+          # 2. Set this new variable's value to the configuration you
+          # want to use for this repository.
+          #
+          # Note in particular that changing the permissions
+          # monitoring configuration *does not* require you to modify
+          # this workflow.
+          permissions_monitoring_config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
+  verify:
+    needs:
+      - diagnostics
+    permissions:
+      # actions/checkout needs this to fetch code
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply standard cisagov job preamble
+        uses: cisagov/action-job-preamble@v1
+        with:
+          # This functionality is poorly implemented and has been
+          # causing problems due to the MITM implementation hogging or
+          # leaking memory.  As a result we disable it by default.  If
+          # you want to temporarily enable it, simply set
+          # monitor_permissions equal to "true".
+          #
+          # TODO: Re-enable this functionality when practical.  See
+          # cisagov/skeleton-generic#207 for more details.
+          monitor_permissions: "false"
+          # Use a variable to specify the permissions monitoring
+          # configuration. By default this will yield the
+          # configuration stored in the cisagov organization-level
+          # variable, but if you want to use a different configuration
+          # then simply:
+          # 1. Create a repository-level variable with the name
+          # ACTIONS_PERMISSIONS_CONFIG.
+          # 2. Set this new variable's value to the configuration you
+          # want to use for this repository.
+          #
+          # Note in particular that changing the permissions
+          # monitoring configuration *does not* require you to modify
+          # this workflow.
+          permissions_monitoring_config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
+      - name: Checkout the repository
+        uses: actions/checkout@v6
+      - id: setup-env
+        name: Run action from the local copy
+        uses: ./
+      - name: Install dependencies and build the action
+        run: |
+          npm ci
+          npm run package
+      - name: Verify that dist/ is up-to-date with changes in src/
+        run: |
+          # Fail if dist/ has changes of any kind
+          if [ -n "$(git status --porcelain dist/)" ]; then
+            echo "Changes detected in dist/ after running 'npm run package'."
+            git status --short dist/
+            exit 1
+          fi
+      - env:
+          ACTION_OUTPUTS: ${{ toJSON(steps.setup-env.outputs) }}
+        name: Verify expected functionality of the action
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const { toolVersions } = require("./src/versions.js");
+            const outputVersions = JSON.parse(process.env.ACTION_OUTPUTS);
+            var failedChecks = 0;
+            for (const [key, value] of Object.entries(toolVersions)) {
+              const outputKey = `${key}-version`;
+              if (!Object.hasOwn(outputVersions, outputKey)) {
+                console.error("Missing '%s' in outputs", outputKey);
+                failedChecks++;
+              } else if (outputVersions[outputKey] !== value) {
+                console.error(
+                  "Mismatched versions for %s: expected '%s', got '%s'",
+                  key,
+                  value,
+                  outputVersions[outputKey],
+                );
+                failedChecks++;
+              }
+            }
+            if (failedChecks > 0) {
+              core.setFailed("Verification failed");
+            }
