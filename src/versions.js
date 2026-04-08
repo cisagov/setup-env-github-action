@@ -42,7 +42,7 @@ const toolVersions = {
    *   license.
    */
   terraform: "1.5.7",
-  "terraform-docs": "v0.21.0",
+  "terraform-docs": "v0.22.0",
 };
 
 module.exports = {
