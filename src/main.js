@@ -1,5 +1,5 @@
-const core = require("@actions/core");
-const { toolVersions } = require("./versions");
+import * as core from "@actions/core";
+import { toolVersions } from "./versions";
 
 async function run() {
   try {
