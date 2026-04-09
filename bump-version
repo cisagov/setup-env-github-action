@@ -10,7 +10,7 @@ set -o pipefail
 # Stores the canonical version for the project.
 VERSION_FILE=package.json
 # Files that should be updated with the new version.
-VERSION_FILES=("$VERSION_FILE")
+VERSION_FILES=("$VERSION_FILE" package-lock.json)
 
 USAGE=$(
   cat << END_OF_LINE
@@ -32,7 +32,9 @@ END_OF_LINE
 old_version=$(sed -n "s/^[[:blank:]]*\"version\": \"\(.*\)\",\{0,1\}$/\1/p" $VERSION_FILE)
 # Comment out periods so they are interpreted as periods and don't
 # just match any character
-old_version_regex="^\([[:blank:]]*\"version\": \)\"${old_version//\./\\\.}\""
+# We are not currently using this, but it will be necessary if we need to work with
+# non-npm files in the future.
+# old_version_regex="^\([[:blank:]]*\"version\": \)\"${old_version//\./\\\.}\""
 new_version="$old_version"
 
 bump_part=""
@@ -154,15 +156,21 @@ if [ "$with_prerelease" = true ]; then
   new_version="$temp_version"
 fi
 
-tmp_file=/tmp/version.$$
-for version_file in "${VERSION_FILES[@]}"; do
-  if [ ! -f "$version_file" ]; then
-    echo Missing expected file: "$version_file"
-    exit 1
-  fi
-  sed "s/$old_version_regex/\1\"$new_version\"/" "$version_file" > $tmp_file
-  mv $tmp_file "$version_file"
-done
+# We are not currently using this, but it will be necessary if we need to work with
+# non-npm files in the future.
+# tmp_file=/tmp/version.$$
+# for version_file in "${VERSION_FILES[@]}"; do
+#   if [ ! -f "$version_file" ]; then
+#     echo Missing expected file: "$version_file"
+#     exit 1
+#   fi
+#   sed "s/$old_version_regex/\1\"$new_version\"/" "$version_file" > $tmp_file
+#   mv $tmp_file "$version_file"
+# done
+
+# Use npm's built-in functionality to update the version of the package. We use the
+# `--no-git-tag-version` option to prevent npm from committing and creating a tag.
+npm version --no-git-tag-version "$new_version"
 
 git add "${VERSION_FILES[@]}"
 git commit --message "$commit_prefix version from $old_version to $new_version"
