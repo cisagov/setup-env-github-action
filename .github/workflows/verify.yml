@@ -115,7 +115,7 @@ jobs:
       - env:
           ACTION_OUTPUTS: ${{ toJSON(steps.setup-env.outputs) }}
         name: Verify expected functionality of the action
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const { toolVersions } = require("./src/versions.js");
