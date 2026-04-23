@@ -38,5 +38,5 @@
     "package:watch": "npm run package -- --watch"
   },
   "type": "module",
-  "version": "1.2.2"
+  "version": "1.3.0"
 }
