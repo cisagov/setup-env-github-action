@@ -1,6 +1,8 @@
 import * as core from "@actions/core";
 import { toolVersions } from "./versions";
 
+export { run };
+
 async function run() {
   try {
     // Populate the Action outputs with the tool versions
@@ -12,7 +14,3 @@ async function run() {
     core.setFailed(error.message);
   }
 }
-
-module.exports = {
-  run,
-};
