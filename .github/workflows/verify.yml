@@ -119,8 +119,21 @@ jobs:
         with:
           script: |
             const { toolVersions } = require("./src/versions.js");
+            const { version: actionVersion } = require("./package.json");
             const outputVersions = JSON.parse(process.env.ACTION_OUTPUTS);
             var failedChecks = 0;
+            // Verify the action-version output
+            if (!Object.hasOwn(outputVersions, "action-version")) {
+              console.error("Missing 'action-version' in outputs");
+              failedChecks++;
+            } else if (outputVersions["action-version"] !== actionVersion) {
+              console.error(
+                "Mismatched versions for action-version: expected '%s', got '%s'",
+                actionVersion,
+                outputVersions["action-version"],
+              );
+              failedChecks++;
+            }
             for (const [key, value] of Object.entries(toolVersions)) {
               const outputKey = `${key}-version`;
               if (!Object.hasOwn(outputVersions, outputKey)) {

@@ -1,9 +1,11 @@
 const core = require("@actions/core");
+const { version } = require("../package.json");
 const { toolVersions } = require("./versions");
 
 async function run() {
   try {
-    // Populate the Action outputs with the tool versions
+    // Populate the Action outputs with the action version and tool versions
+    core.setOutput("action-version", version);
     for (const [key, value] of Object.entries(toolVersions)) {
       core.setOutput(key + "-version", value);
     }
