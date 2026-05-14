@@ -1,5 +1,7 @@
-const core = require("@actions/core");
-const { toolVersions } = require("./versions");
+import * as core from "@actions/core";
+import { toolVersions } from "./versions";
+
+export { run };
 
 async function run() {
   try {
@@ -12,7 +14,3 @@ async function run() {
     core.setFailed(error.message);
   }
 }
-
-module.exports = {
-  run,
-};

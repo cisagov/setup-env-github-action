@@ -1,3 +1,5 @@
+export { toolVersions };
+
 /**
  * This object tracks the versions of the tools we commonly use in our GitHub
  * Actions workflows. Each key is the prefix of the output variable we want to
@@ -43,8 +45,4 @@ const toolVersions = {
    */
   terraform: "1.5.7",
   "terraform-docs": "v0.22.0",
-};
-
-module.exports = {
-  toolVersions,
 };
