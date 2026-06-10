@@ -10,7 +10,7 @@ const toolVersions = {
   "go-junit-report": "v2.1.0",
   goimports: "v0.45.0",
   gomock: "v1.6.0",
-  gosec: "v2.24.0",
+  gosec: "v2.27.1",
   /**
    * We are choosing to remain on v1.9 due to HashiCorp's decision to change
    * the license of Packer from MPL 2.0 to BSL starting with 1.10.0. This is
