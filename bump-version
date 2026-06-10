@@ -172,7 +172,10 @@ fi
 # `--no-git-tag-version` option to prevent npm from committing and creating a tag.
 npm version --no-git-tag-version "$new_version"
 
-git add "${VERSION_FILES[@]}"
+# Regenerate distribution files since they include the package version
+npm run package
+
+git add "${VERSION_FILES[@]}" dist/
 git commit --message "$commit_prefix version from $old_version to $new_version"
 
 if [ "$with_push" = true ]; then
