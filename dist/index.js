@@ -31134,11 +31134,13 @@ exports.debug = debug; // for test
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const core = __nccwpck_require__(7484);
+const { version } = __nccwpck_require__(8330);
 const { toolVersions } = __nccwpck_require__(6100);
 
 async function run() {
   try {
-    // Populate the Action outputs with the tool versions
+    // Populate the Action outputs with the action version and tool versions
+    core.setOutput("action-version", version);
     for (const [key, value] of Object.entries(toolVersions)) {
       core.setOutput(key + "-version", value);
     }
@@ -31489,6 +31491,14 @@ module.exports = require("tls");
 
 "use strict";
 module.exports = require("util");
+
+/***/ }),
+
+/***/ 8330:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"author":"VM Development Team","bugs":{"url":"https://github.com/cisagov/setup-env-github-action/issues"},"dependencies":{"@actions/core":"^2.0.3"},"description":"GitHub Action to populate tool versions for use in GitHub Actions workflows","devDependencies":{"@github/local-action":"^7.0.1","@vercel/ncc":"^0.38.4"},"engines":{"node":">=20"},"exports":{".":"./dist/index.js"},"homepage":"https://github.com/cisagov/setup-env-github-action","keywords":["GitHub","Actions","JavaScript"],"license":"CC0 1.0 Universal","name":"setup-env-github-action","private":true,"repository":{"type":"git","url":"git+https://github.com/cisagov/setup-env-github-action.git"},"scripts":{"all":"npm run format:write && npm run package","bundle":"npm run format:write && npm run package","format:write":"pre-commit run prettier --all-files","package":"npx ncc build src/index.js -o dist --source-map --license licenses.txt","package:watch":"npm run package -- --watch"},"version":"1.3.0"}');
 
 /***/ })
 

@@ -6,6 +6,8 @@ branding:
   color: purple
 description: Setup a shared GitHub Actions workflow environment.
 outputs:
+  action-version:
+    description: The version of this action.
   go-version:
     description: The version (major.minor) of Go to use.
   go-critic-version:
