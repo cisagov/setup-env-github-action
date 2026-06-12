@@ -10,7 +10,7 @@ set -o pipefail
 # Stores the canonical version for the project.
 VERSION_FILE=package.json
 # Files that should be updated with the new version.
-VERSION_FILES=("$VERSION_FILE" package-lock.json)
+VERSION_FILES=("$VERSION_FILE" package-lock.json dist/index.js)
 
 USAGE=$(
   cat << END_OF_LINE
@@ -171,6 +171,9 @@ fi
 # Use npm's built-in functionality to update the version of the package. We use the
 # `--no-git-tag-version` option to prevent npm from committing and creating a tag.
 npm version --no-git-tag-version "$new_version"
+
+# Regenerate distribution files since they include the package version
+npm run package
 
 git add "${VERSION_FILES[@]}"
 git commit --message "$commit_prefix version from $old_version to $new_version"
