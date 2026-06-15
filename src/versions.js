@@ -8,9 +8,9 @@ const toolVersions = {
   go: "1.26",
   "go-critic": "v0.14.3",
   "go-junit-report": "v2.1.0",
-  goimports: "v0.42.0",
+  goimports: "v0.45.0",
   gomock: "v1.6.0",
-  gosec: "v2.24.0",
+  gosec: "v2.27.1",
   /**
    * We are choosing to remain on v1.9 due to HashiCorp's decision to change
    * the license of Packer from MPL 2.0 to BSL starting with 1.10.0. This is
@@ -33,7 +33,7 @@ const toolVersions = {
    * https://github.com/cisagov/skeleton-generic/blob/c5c809b6319b96c8a3a4bc04707c4fed9b25c98b/.pre-commit-config.yaml#L237
    */
   python: "3.13",
-  shfmt: "v3.12.0",
+  shfmt: "v3.13.1",
   staticcheck: "v0.7.0",
   /**
    * We are choosing to remain on v1.5 due to HashiCorp's decision to change
@@ -50,7 +50,7 @@ const toolVersions = {
    *   license.
    */
   terraform: "1.5.7",
-  "terraform-docs": "v0.22.0",
+  "terraform-docs": "v0.24.0",
 };
 
 module.exports = {

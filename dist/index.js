@@ -31170,9 +31170,9 @@ const toolVersions = {
   go: "1.26",
   "go-critic": "v0.14.3",
   "go-junit-report": "v2.1.0",
-  goimports: "v0.42.0",
+  goimports: "v0.45.0",
   gomock: "v1.6.0",
-  gosec: "v2.24.0",
+  gosec: "v2.27.1",
   /**
    * We are choosing to remain on v1.9 due to HashiCorp's decision to change
    * the license of Packer from MPL 2.0 to BSL starting with 1.10.0. This is
@@ -31195,7 +31195,7 @@ const toolVersions = {
    * https://github.com/cisagov/skeleton-generic/blob/c5c809b6319b96c8a3a4bc04707c4fed9b25c98b/.pre-commit-config.yaml#L237
    */
   python: "3.13",
-  shfmt: "v3.12.0",
+  shfmt: "v3.13.1",
   staticcheck: "v0.7.0",
   /**
    * We are choosing to remain on v1.5 due to HashiCorp's decision to change
@@ -31212,7 +31212,7 @@ const toolVersions = {
    *   license.
    */
   terraform: "1.5.7",
-  "terraform-docs": "v0.22.0",
+  "terraform-docs": "v0.24.0",
 };
 
 module.exports = {
@@ -31498,7 +31498,7 @@ module.exports = require("util");
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"author":"VM Development Team","bugs":{"url":"https://github.com/cisagov/setup-env-github-action/issues"},"dependencies":{"@actions/core":"^2.0.3"},"description":"GitHub Action to populate tool versions for use in GitHub Actions workflows","devDependencies":{"@github/local-action":"^7.0.1","@vercel/ncc":"^0.38.4"},"engines":{"node":">=20"},"exports":{".":"./dist/index.js"},"homepage":"https://github.com/cisagov/setup-env-github-action","keywords":["GitHub","Actions","JavaScript"],"license":"CC0 1.0 Universal","name":"setup-env-github-action","private":true,"repository":{"type":"git","url":"git+https://github.com/cisagov/setup-env-github-action.git"},"scripts":{"all":"npm run format:write && npm run package","bundle":"npm run format:write && npm run package","format:write":"pre-commit run prettier --all-files","package":"npx ncc build src/index.js -o dist --source-map --license licenses.txt","package:watch":"npm run package -- --watch"},"version":"1.3.0"}');
+module.exports = /*#__PURE__*/JSON.parse('{"author":"VM Development Team","bugs":{"url":"https://github.com/cisagov/setup-env-github-action/issues"},"dependencies":{"@actions/core":"^2.0.3"},"description":"GitHub Action to populate tool versions for use in GitHub Actions workflows","devDependencies":{"@github/local-action":"^7.0.1","@vercel/ncc":"^0.38.4"},"engines":{"node":">=20"},"exports":{".":"./dist/index.js"},"homepage":"https://github.com/cisagov/setup-env-github-action","keywords":["GitHub","Actions","JavaScript"],"license":"CC0 1.0 Universal","name":"setup-env-github-action","private":true,"repository":{"type":"git","url":"git+https://github.com/cisagov/setup-env-github-action.git"},"scripts":{"all":"npm run format:write && npm run package","bundle":"npm run format:write && npm run package","format:write":"pre-commit run prettier --all-files","package":"npx ncc build src/index.js -o dist --source-map --license licenses.txt","package:watch":"npm run package -- --watch"},"version":"1.3.1"}');
 
 /***/ })
 
