@@ -31194,7 +31194,7 @@ const toolVersions = {
    * [1]:
    * https://github.com/cisagov/skeleton-generic/blob/c5c809b6319b96c8a3a4bc04707c4fed9b25c98b/.pre-commit-config.yaml#L237
    */
-  python: "3.13",
+  python: "3.14",
   shfmt: "v3.13.1",
   staticcheck: "v0.7.0",
   /**
