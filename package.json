@@ -9,7 +9,7 @@
   "description": "GitHub Action to populate tool versions for use in GitHub Actions workflows",
   "devDependencies": {
     "@github/local-action": "^7.0.1",
-    "@vercel/ncc": "^0.44.0"
+    "@vercel/ncc": "^0.44.1"
   },
   "engines": {
     "node": ">=24"
