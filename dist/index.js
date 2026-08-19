@@ -31498,7 +31498,7 @@ module.exports = require("util");
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"author":"VM Development Team","bugs":{"url":"https://github.com/cisagov/setup-env-github-action/issues"},"dependencies":{"@actions/core":"^2.0.3"},"description":"GitHub Action to populate tool versions for use in GitHub Actions workflows","devDependencies":{"@github/local-action":"^7.0.1","@vercel/ncc":"^0.44.1"},"engines":{"node":">=24"},"exports":{".":"./dist/index.js"},"homepage":"https://github.com/cisagov/setup-env-github-action","keywords":["GitHub","Actions","JavaScript"],"license":"CC0 1.0 Universal","name":"setup-env-github-action","private":true,"repository":{"type":"git","url":"git+https://github.com/cisagov/setup-env-github-action.git"},"scripts":{"all":"npm run format:write && npm run package","bundle":"npm run format:write && npm run package","format:write":"pre-commit run prettier --all-files","package":"npx ncc build src/index.js -o dist --source-map --license licenses.txt","package:watch":"npm run package -- --watch"},"version":"2.0.0"}');
+module.exports = /*#__PURE__*/JSON.parse('{"author":"VM Development Team","bugs":{"url":"https://github.com/cisagov/setup-env-github-action/issues"},"dependencies":{"@actions/core":"^2.0.3"},"description":"GitHub Action to populate tool versions for use in GitHub Actions workflows","devDependencies":{"@github/local-action":"^7.0.1","@vercel/ncc":"^0.45.0"},"engines":{"node":">=24"},"exports":{".":"./dist/index.js"},"homepage":"https://github.com/cisagov/setup-env-github-action","keywords":["GitHub","Actions","JavaScript"],"license":"CC0 1.0 Universal","name":"setup-env-github-action","private":true,"repository":{"type":"git","url":"git+https://github.com/cisagov/setup-env-github-action.git"},"scripts":{"all":"npm run format:write && npm run package","bundle":"npm run format:write && npm run package","format:write":"pre-commit run prettier --all-files","package":"npx ncc build src/index.js -o dist --source-map --license licenses.txt","package:watch":"npm run package -- --watch"},"version":"2.0.0"}');
 
 /***/ })
 
@@ -31535,8 +31535,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"author":"VM Development Team","bugs"
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat */
-/******/ 	
+/******/ 	/* webpack/runtime/asset-relocator-loader */
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
 /******/ 	
 /************************************************************************/
