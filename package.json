@@ -4,7 +4,7 @@
     "url": "https://github.com/cisagov/setup-env-github-action/issues"
   },
   "dependencies": {
-    "@actions/core": "^2.0.3"
+    "@actions/core": "^3.0.1"
   },
   "description": "GitHub Action to populate tool versions for use in GitHub Actions workflows",
   "devDependencies": {
